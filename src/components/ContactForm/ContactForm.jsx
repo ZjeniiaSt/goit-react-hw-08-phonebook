@@ -1,25 +1,25 @@
-import { useState } from 'react';
-import { BsPersonCircle } from 'react-icons/bs';
-import { BsFillTelephoneFill } from 'react-icons/bs';
-import { Form, FormInput, FormLabel, AddButton } from './ContactForm.styled';
-import { useSelector, useDispatch } from 'react-redux';
-import { addContact } from '../../redux/phonebook-operations';
-import { getContacts } from '../../redux/phonebook-selectors';
+import { useState } from "react";
+import { BsPersonCircle } from "react-icons/bs";
+import { BsFillTelephoneFill } from "react-icons/bs";
+import { Form, FormInput, FormLabel, AddButton } from "./ContactForm.styled";
+import { useSelector, useDispatch } from "react-redux";
+import { addContact } from "../../redux/contacts/phonebook-operations";
+import { getContacts } from "../../redux/contacts/phonebook-selectors";
 
 function ContactForm() {
-  const [name, setName] = useState('');
-  const [number, setNumber] = useState('');
+  const [name, setName] = useState("");
+  const [number, setNumber] = useState("");
 
   const contacts = useSelector(getContacts);
   const dispatch = useDispatch();
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     contacts.some(
-      contact =>
+      (contact) =>
         contact.name.toLowerCase() === name.toLowerCase() ||
-        contact.number === number,
+        contact.number === number
     )
       ? alert(`${name} is alredy in contacts`)
       : dispatch(addContact({ name, number }));
@@ -27,8 +27,8 @@ function ContactForm() {
   };
 
   const reset = () => {
-    setName('');
-    setNumber('');
+    setName("");
+    setNumber("");
   };
 
   return (
@@ -41,7 +41,7 @@ function ContactForm() {
           pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
           required
-          onChange={e => setName(e.target.value)}
+          onChange={(e) => setName(e.target.value)}
           value={name}
         />
       </FormLabel>
@@ -54,7 +54,7 @@ function ContactForm() {
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
           required
           value={number}
-          onChange={e => setNumber(e.target.value)}
+          onChange={(e) => setNumber(e.target.value)}
         />
       </FormLabel>
       <AddButton type="submit">Add contact</AddButton>

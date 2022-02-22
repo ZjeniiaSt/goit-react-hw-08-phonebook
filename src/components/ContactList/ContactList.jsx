@@ -1,10 +1,10 @@
-import { useSelector, useDispatch } from 'react-redux';
-import { getvisibleContacts } from '../../redux/phonebook-selectors';
-import { fetchContacts } from '../../redux/phonebook-operations';
-import { useEffect } from 'react';
+import { useSelector, useDispatch } from "react-redux";
+import { getvisibleContacts } from "../../redux/contacts/phonebook-selectors";
+import { fetchContacts } from "../../redux/contacts/phonebook-operations";
+import { useEffect } from "react";
 
-import { ContactsRoster } from './ContactList.styled';
-import ContactItem from '../ContactItem';
+import { ContactsRoster } from "./ContactList.styled";
+import ContactItem from "../ContactItem";
 
 function ContactList() {
   const dispatch = useDispatch();

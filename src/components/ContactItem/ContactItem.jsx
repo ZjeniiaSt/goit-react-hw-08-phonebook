@@ -1,12 +1,12 @@
-import { useDispatch } from 'react-redux';
-import { BsTrashFill } from 'react-icons/bs';
-import { deleteContact } from '../../redux/phonebook-operations';
+import { useDispatch } from "react-redux";
+import { BsTrashFill } from "react-icons/bs";
+import { deleteContact } from "../../redux/contacts/phonebook-operations";
 import {
   ContactsData,
   ContactNumber,
   ContactDelete,
-} from './ContactItem.styled';
-import PropTypes from 'prop-types';
+} from "./ContactItem.styled";
+import PropTypes from "prop-types";
 
 function ContactItem({ id, name, number }) {
   const dispatch = useDispatch();
