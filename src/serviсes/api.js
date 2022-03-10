@@ -32,7 +32,7 @@ export const logoutUser = async () => {
   return data;
 };
 
-export const CurrentUser = async (persistedToken) => {
+export const currentUser = async (persistedToken) => {
   const { data } = await axios.get("/users/current", persistedToken);
   return data;
 };

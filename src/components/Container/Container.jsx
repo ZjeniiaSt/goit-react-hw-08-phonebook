@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
-import { ContainerStyle, ContainerTitle } from './Container.styled';
+import PropTypes from "prop-types";
+import { ContainerStyle, ContainerTitle } from "./Container.styled";
 
 function Container({ title, children }) {
   return (

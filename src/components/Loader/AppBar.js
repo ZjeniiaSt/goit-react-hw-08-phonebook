@@ -1,8 +1,8 @@
 import { useSelector } from "react-redux";
-import AuthNav from "./AuthNav";
-import Navigation from "./Navigation";
-import UserMenu from "./UserMenu";
-import { getIsLoggedIn } from "../redux/auth/auth-selectors";
+import AuthNav from "../AuthNav";
+import Navigation from "../Navigation";
+import UserMenu from "../UserMenu";
+import { getIsLoggedIn } from "../../redux/auth/auth-selectors";
 
 const styles = {
   header: {
