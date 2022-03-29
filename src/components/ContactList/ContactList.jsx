@@ -2,8 +2,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { getvisibleContacts } from "../../redux/contacts/phonebook-selectors";
 import { fetchContacts } from "../../redux/contacts/phonebook-operations";
 import { useEffect } from "react";
+import { Box, List } from "@mui/material";
 
-import { ContactsRoster } from "./ContactList.styled";
+//import { ContactsRoster } from "./ContactList.styled";
 import ContactItem from "../ContactItem";
 
 function ContactList() {
@@ -12,11 +13,13 @@ function ContactList() {
   useEffect(() => dispatch(fetchContacts()), [dispatch]);
 
   return (
-    <ContactsRoster>
-      {contacts.map(({ id, name, number }) => (
-        <ContactItem key={id} name={name} number={number} id={id} />
-      ))}
-    </ContactsRoster>
+    <Box paddingLeft={5} paddingRight={5}>
+      <List>
+        {contacts.map(({ id, name, number }) => (
+          <ContactItem key={id} name={name} number={number} id={id} />
+        ))}
+      </List>
+    </Box>
   );
 }
 

@@ -1,25 +1,26 @@
 import { useDispatch } from "react-redux";
 import { BsTrashFill } from "react-icons/bs";
 import { deleteContact } from "../../redux/contacts/phonebook-operations";
-import {
-  ContactsData,
-  ContactNumber,
-  ContactDelete,
-} from "./ContactItem.styled";
 import PropTypes from "prop-types";
+import { Button, ListItem, ListItemText } from "@mui/material";
 
 function ContactItem({ id, name, number }) {
   const dispatch = useDispatch();
 
   return (
-    <ContactsData>
-      <span>
-        {name}: <ContactNumber>{number}</ContactNumber>
-      </span>
-      <ContactDelete type="button" onClick={() => dispatch(deleteContact(id))}>
+    <ListItem>
+      <ListItemText>
+        {name}: {number}
+      </ListItemText>
+      <Button
+        type="button"
+        aria-label="delete"
+        variant="contained"
+        onClick={() => dispatch(deleteContact(id))}
+      >
         <BsTrashFill />
-      </ContactDelete>
-    </ContactsData>
+      </Button>
+    </ListItem>
   );
 }
 
