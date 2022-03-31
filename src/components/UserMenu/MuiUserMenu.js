@@ -10,9 +10,11 @@ export default function MuiUserMenu() {
   const dispatch = useDispatch();
   const name = useSelector(getUserName);
   const avatar = defaultAvatar;
+
   return (
     <Box sx={{ display: "flex", alignItems: "center" }}>
       <Typography> Welcome, {name}</Typography>
+
       <Avatar
         alt="avatar"
         src={avatar}

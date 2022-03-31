@@ -3,9 +3,12 @@ import { BottomNavigation, BottomNavigationAction } from "@mui/material";
 import HomeIcon from "@mui/icons-material/Home";
 import PeopleIcon from "@mui/icons-material/People";
 import { useState } from "react";
+import { useSelector } from "react-redux";
+import { getIsLoggedIn } from "../redux/auth/auth-selectors";
 
 const MuiBottomNavigation = () => {
   const [value, setValue] = useState(0);
+  const isLoggedIn = useSelector(getIsLoggedIn);
   return (
     <nav>
       <BottomNavigation
@@ -21,12 +24,15 @@ const MuiBottomNavigation = () => {
           label="Home"
           icon={<HomeIcon />}
         ></BottomNavigationAction>
-        <BottomNavigationAction
-          component={NavLink}
-          to="/contacts"
-          label="Contacts"
-          icon={<PeopleIcon />}
-        />
+
+        {isLoggedIn && (
+          <BottomNavigationAction
+            component={NavLink}
+            to="/contacts"
+            label="Contacts"
+            icon={<PeopleIcon />}
+          />
+        )}
       </BottomNavigation>
     </nav>
   );

@@ -1,5 +1,5 @@
 import "./App.css";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import MuiLayout from "./components/Layout";
 import MuiAppBar from "./components/MuiAppBar";
@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { refreshCurrentUser } from "./redux/auth/auth-operations";
 import { getIsFetchingCurrentUser } from "./redux/auth/auth-selectors";
-import PrivateRouter from "./routers/PrivateRouter";
+import PrivateRoute from "./routers/PrivateRoute";
 import PublicRoute from "./routers/PublicRoute";
 import { ThemeProvider } from "@mui/material";
 import theme from "./ThemeMui/Theme";
@@ -41,9 +41,9 @@ function App() {
                 <Route
                   path="contacts"
                   element={
-                    <PrivateRouter>
+                    <PrivateRoute>
                       <ContactsView />
-                    </PrivateRouter>
+                    </PrivateRoute>
                   }
                 ></Route>
                 <Route
@@ -62,7 +62,7 @@ function App() {
                     </PublicRoute>
                   }
                 ></Route>
-                <Route path="*" element={<HomeView />} />
+                <Route path="*" element={<Navigate to="/" />} />
               </Routes>
             </Suspense>
           </>

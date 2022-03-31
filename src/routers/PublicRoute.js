@@ -5,8 +5,8 @@ import { useSelector } from "react-redux";
 export default function PublicRoute({ children, resctricted = false }) {
   const isLoggedIn = useSelector(getIsLoggedIn);
   const shouldRedirect = isLoggedIn && resctricted;
-  if (!shouldRedirect) {
-    return children;
+  if (shouldRedirect) {
+    return <Navigate to="/contacts" />;
   }
-  return <Navigate to="/contacts" />;
+  return children;
 }
